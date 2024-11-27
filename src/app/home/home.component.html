@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" width="90">
+            <h1>Food</h1>
+        </a>
+        <h3>My Order</h3>
+    </div>
+</nav>
+
+<!-- Category Tabs -->
+<div class="container-fluid p-3">
+    <h1>Categories</h1>
+    <div class="tabs">
+        <button (click)="selectTab('all')">All</button>
+        <button (click)="selectTab('food')">Fast Food</button>
+        <button (click)="selectTab('pizza')">Pizza</button>
+        <button (click)="selectTab('vegetarians')">Vegetarians</button>
+        <button (click)="selectTab('indonesian')">Indonesian Foods</button>
+        <button (click)="selectTab('fruits')">Fruits</button>
+    </div>
+</div>
+
+<!-- Recommended Products -->
+<div class="images p-3">
+    <h1>Recommended</h1>
+
+    <div *ngIf="selectedTab === 'all'">
+        <h2>All</h2>
+        <div class="container m-5">
+            <div class="row">
+                <!-- Product Cards -->
+                <div class="col-xl-3 col-md-4 col-6" *ngFor="let product of allProducts">
+                    <div class="card shadow bg-light border-0" style="width: 18rem;">
+                        <img [src]="product.image" alt="Product Image" />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between">
+                                <h4>{{ product.price | currency }}</h4>
+                                <button  class="btn btn-order">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
